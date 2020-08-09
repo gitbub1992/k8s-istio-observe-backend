@@ -20,7 +20,7 @@ import (
 	"os"
 	"time"
 
-	pb "github.com/garystafford/pb-greeting"
+	pb "github.com/gitbub1992/pb-greeting"
 )
 
 const (

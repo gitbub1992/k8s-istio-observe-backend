@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: mg-client
+  namespace: pl-test
+  labels:
+    app: mg-client
+spec:
+  containers:
+    - image: ccr.ccs.tencentyun.com/pulse-line-prod/mongodb-client:4.2
+      name: pl-demo
+      command: ["sh","-c","while true;do sleep 2 && echo 'hello';done"]

@@ -1,13 +1,13 @@
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: dev
+  name: grpc-istio
   labels:
-    name: dev
----
-apiVersion: v1
-kind: Namespace
-metadata:
-  name: test
-  labels:
-    name: test
+    name: grpc-istio
+#---
+#apiVersion: v1
+#kind: Namespace
+#metadata:
+#  name: test
+#  labels:
+#    name: test

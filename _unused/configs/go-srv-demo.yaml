@@ -3,5 +3,5 @@ kind: ConfigMap
 metadata:
   name: go-srv-config
 data:
-  mongodb.conn: mongodb://mongodb:27017/admin
-  rabbitmq.conn: amqp://guest:guest@rabbitmq:5672/
+  mongodb.conn: mongodb://test:test@mongodb.pl-test.svc.cluster.local:27017/admin
+  rabbitmq.conn: amqp://pl:test@rabbitmq.pl-test.svc.cluster.local:5672/

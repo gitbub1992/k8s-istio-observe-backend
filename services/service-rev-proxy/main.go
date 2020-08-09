@@ -10,7 +10,7 @@ import (
 	"context"
 	"flag"
 	lrf "github.com/banzaicloud/logrus-runtime-formatter"
-	gw "github.com/garystafford/pb-greeting"
+	gw "github.com/gitbub1992/pb-greeting"
 	"github.com/grpc-ecosystem/grpc-gateway/runtime"
 	log "github.com/sirupsen/logrus"
 	"google.golang.org/grpc"

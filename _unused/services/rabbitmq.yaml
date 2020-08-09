@@ -49,7 +49,7 @@ spec:
     spec:
       containers:
       - name: rabbitmq
-        image: registry.hub.docker.com/library/rabbitmq:3.8-rc-management-alpine
+        image: ccr.ccs.tencentyun.com/pulse-line-prod/rabbitmq:3.8-rc-management-alpine
         # resources:
         #   requests:
         #     memory: "100M"

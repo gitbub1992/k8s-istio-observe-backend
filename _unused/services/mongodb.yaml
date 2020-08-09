@@ -44,7 +44,7 @@ spec:
     spec:
       containers:
       - name: mongodb
-        image: registry.hub.docker.com/library/mongo:latest
+        image: mongo:latest
         # command: ["--smallfiles"]
         # resources:
         #   requests:

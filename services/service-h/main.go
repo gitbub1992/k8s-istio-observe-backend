@@ -8,7 +8,7 @@ package main
 import (
 	"context"
 	"github.com/banzaicloud/logrus-runtime-formatter"
-	pb "github.com/garystafford/pb-greeting"
+	pb "github.com/gitbub1992/pb-greeting"
 	"github.com/google/uuid"
 	log "github.com/sirupsen/logrus"
 	"go.mongodb.org/mongo-driver/mongo"

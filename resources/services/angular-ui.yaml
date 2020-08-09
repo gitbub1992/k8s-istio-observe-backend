@@ -43,7 +43,7 @@ spec:
     spec:
       containers:
       - name: angular-ui
-        image: gcr.io/go-srv-demo/angular-observe:1.5.0
+        image: ccr.ccs.tencentyun.com/pulse-line-beta/angular-observe:1.5.0
         # resources:
         # requests:
         #   memory: 100M

@@ -1,20 +1,20 @@
 apiVersion: networking.istio.io/v1alpha3
 kind: Gateway
 metadata:
-  name: demo-gateway
+  name: grpc-gateway
 spec:
   selector:
     istio: ingressgateway
   servers:
   - port:
-      number: 80
+      number: 8080
       name: http
       protocol: HTTP
     hosts:
     - ui.dev.example-api.com
-    - ui.test.example-api.com
+#    - ui.test.example-api.com
     - api.dev.example-api.com
-    - api.test.example-api.com
+#    - api.test.example-api.com
 ---
 apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
@@ -24,7 +24,7 @@ spec:
   hosts:
   - ui.dev.example-api.com
   gateways:
-  - demo-gateway
+  - grpc-gateway
   http:
   - match:
     - uri:
@@ -33,7 +33,7 @@ spec:
     - destination:
         port:
           number: 80
-        host: angular-ui.dev.svc.cluster.local
+        host: angular-ui.grpc-istio.svc.cluster.local
       weight: 100
 ---
 apiVersion: networking.istio.io/v1alpha3
@@ -44,7 +44,7 @@ spec:
   hosts:
   - api.dev.example-api.com
   gateways:
-  - demo-gateway
+  - grpc-gateway
   http:
   - match:
     - uri:
@@ -53,7 +53,7 @@ spec:
     - destination:
         port:
           number: 80
-        host: service-rev-proxy.dev.svc.cluster.local
+        host: service-rev-proxy.grpc-istio.svc.cluster.local
       weight: 100
     corsPolicy:
       allowOrigin:
@@ -64,52 +64,52 @@ spec:
       allowCredentials: true
       allowHeaders:
       - "*"
----
-apiVersion: networking.istio.io/v1alpha3
-kind: VirtualService
-metadata:
-  name: angular-ui-test
-spec:
-  hosts:
-  - ui.test.example-api.com
-  gateways:
-  - demo-gateway
-  http:
-  - match:
-    - uri:
-        prefix: /
-    route:
-    - destination:
-        port:
-          number: 80
-        host: angular-ui.test.svc.cluster.local
-      weight: 100
----
-apiVersion: networking.istio.io/v1alpha3
-kind: VirtualService
-metadata:
-  name: service-rev-proxy-test
-spec:
-  hosts:
-  - api.test.example-api.com
-  gateways:
-  - demo-gateway
-  http:
-  - match:
-    - uri:
-        prefix: /
-    route:
-    - destination:
-        port:
-          number: 80
-        host: service-rev-proxy.test.svc.cluster.local
-      weight: 100
-    corsPolicy:
-      allowOrigin:
-      - "*"
-      allowMethods:
-      - OPTIONS
-      - GET
-      allowCredentials: true
-      allowHeaders:
-      - "*"
+#---
+#apiVersion: networking.istio.io/v1alpha3
+#kind: VirtualService
+#metadata:
+#  name: angular-ui-test
+#spec:
+#  hosts:
+#  - ui.test.example-api.com
+#  gateways:
+#  - grpc-gateway
+#  http:
+#  - match:
+#    - uri:
+#        prefix: /
+#    route:
+#    - destination:
+#        port:
+#          number: 80
+#        host: angular-ui.test.svc.cluster.local
+#      weight: 100
+#---
+#apiVersion: networking.istio.io/v1alpha3
+#kind: VirtualService
+#metadata:
+#  name: service-rev-proxy-test
+#spec:
+#  hosts:
+#  - api.test.example-api.com
+#  gateways:
+#  - grpc-gateway
+#  http:
+#  - match:
+#    - uri:
+#        prefix: /
+#    route:
+#    - destination:
+#        port:
+#          number: 80
+#        host: service-rev-proxy.test.svc.cluster.local
+#      weight: 100
+#    corsPolicy:
+#      allowOrigin:
+#      - "*"
+#      allowMethods:
+#      - OPTIONS
+#      - GET
+#      allowCredentials: true
+#      allowHeaders:
+#      - "*"
